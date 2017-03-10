@@ -1,3 +1,5 @@
+# Settings that should be available in all modules
+
 maxrmsstr = '5e-4'
 maxrms = float(maxrmsstr)
 rloudfacstr = '2.7e-2'
