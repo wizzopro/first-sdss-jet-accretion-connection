@@ -92,26 +92,26 @@ def getfirstrms(imdata, rac, decc, w, boxdiam=settings.setboxdiam, n_rmscutouts=
     """
     Asses RMS at chosen coordinates by sampling an median-averaging local RMS at coordinates steps of 0.05 degree away from those coordinates.
     The average is of n_rmscutouts images with sides of boxdiam length.)
-    Supply both RA/DEC as well as WCS coordinates 
+    Supply both RA/DEC as well as WCS coordinates
     """
     tstra = [rac, rac + 0.05, rac - 0.05, rac + 0.1, rac - 0.1, rac + 0.15, rac - 0.15, rac + 0.2, rac - 0.2]
     tstdec = [decc, decc + 0.05, decc - 0.05, decc + 0.1, decc - 0.1, decc + 0.15, decc - 0.15]
-    tstcoords = []
+    tstc = []
     for r in itertools.product(tstra, tstdec):
         # if r != (rac,decc):  # don't have to remove centre ra/dec: in survey as no expected source in centre of fov if any FIRST images
         crd = SkyCoord(r[0], r[1], unit='deg')
-        tstcoords.append(crd)
-    if n_rmscutouts > len(tstcoords):
+        tstc.append(crd)
+    if n_rmscutouts > len(tstc):
         print "(***) Warning: increase number of testra, tstdec. Only", len(tstc), "available at the moment."
         print "(***) Setting n_rmscutouts to max"
-        n_rmscutouts = len(tstcoords)
+        n_rmscutouts = len(tstc)
         print n_rmscutouts
     rmsarr = []
     i = 0
     cutoutsize = (boxdiam, boxdiam)
     while len(rmsarr) < n_rmscutouts:
-        c = tstcoords[i]
-        cutout = Cutout2D(imdata[0][0], c, size = cutoutsize, wcs=w)  # , mode='strict')  # copy = True)
+        c = tstc[i]
+        cutout = Cutout2D(imdata[0][0], c, size=cutoutsize, wcs=w)  # , mode='strict')  # copy = True)
         if imfuncs.imcheck(cutout.data, boxdiam) == 0:
             rmsarr.append(cutout.data.std())
         else:
@@ -145,12 +145,12 @@ def lastverperfolder(folder):
     First create dicts to associate last letter in filename root with respective value
     Special case for three images that do not have version letter in their root file name
     """
-    lettonumdic = dict(zip(string.letters, [ord(c)%32 for c in string.letters]))
+    lettonumdic = dict(zip(string.letters, [ord(c) % 32 for c in string.letters]))
     lettonumdic['.'] = 27
-    numtoletdic = dict(zip([ord(c)%32 for c in string.letters], string.letters[0:26]))
+    numtoletdic = dict(zip([ord(c) % 32 for c in string.letters], string.letters[0:26]))
     numtoletdic[27] = ''
-    
-    filetab = Table(rows = [(x[:11], lettonumdic[x[11]]) for x in os.listdir(folders.firstdata_folder + folder)])
+
+    filetab = Table(rows=[(x[:11], lettonumdic[x[11]]) for x in os.listdir(folders.firstdata_folder + folder)])
     IMCOORDS = list(set(filetab['col0']))
     IMS = []
     for imcoord in IMCOORDS:
@@ -190,6 +190,3 @@ if __name__ == "__main__":
     namear = ['ra', 'dec', 'ramin', 'ramax', 'decmin', 'decmax', 'rms', 'rmshdr', 'im']
     imtab = Table(rows=ROWS, names=namear)
     imtab.write('imtab8_tmp.fits', overwrite=True)
-
-
-    
