@@ -9,7 +9,7 @@ will be submitted end of summer 2017.
 
 Practically speaking this uses Python/astropy to combine archival data from the VLA (Very Large Array) FIRST (Faint Images of the Radio Sky at Twenty Centimeters) survey, with optical spectroscopic data from the SDSS (Sloan Digital Sky Survey).
 
-As the final paper has not been published yet, currently only the first main module is online (first_imtab). Please see the description in this file. 
+As the final paper has not been published yet, currently only the first main module is online (first_imtab). Please see the description below. 
 
 
 |FILE | Description |
@@ -22,19 +22,15 @@ As the final paper has not been published yet, currently only the first main mod
 
 
 
-README for first_imtab module:  
+README for first_imtab module:
+
 To start, download all available data from the VLA (Very Large
 Array) FIRST (Faint Images of the Radio Sky at Twenty-Centimeters)
-survey (http://sundog.stsci.edu/).  
-These images are available through anonymous ftp from
+survey (http://sundog.stsci.edu/). These images are available through anonymous ftp from
 ftp://archive.stsci.edu/pub/vla_first/data and comprise a total
-size of about 340 GB.  
-Set the folder where the data is downloaded in the folders.firstdata_folder variable.__
-This module consequently selects the last version of every available
+size of about 340 GB. Set the folder where the data is downloaded in
+the folders.firstdata_folder variable. This module consequently selects the last version of every available
 FIRST image, gathers and constructs a table with important necessary
-of these images.  
-Most importantly the ra/dec covered by all useable first images as
-well as the RMS as estimated by the survey itself.  
-Also do a new estimate for RMS from multiple areas in a FIRST image
-(needed later for statistics).  
-This module can be run independently to create the table, but is also called from main module (first.py).
+of these images (most importantly the ra/dec covered by all useable first images as
+well as the RMS as estimated by the survey itself). Also does a new estimate for RMS from multiple areas in a FIRST image
+(needed later for statistics). This module can be run independently to create the table, but is also called from main module (first.py).
