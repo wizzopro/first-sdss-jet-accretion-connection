@@ -7,7 +7,7 @@ black hole astrophysics. The paper with the above title that will
 summarise the results obtained with this code is in preparation and
 will be submitted end of summer 2017.
 
-Practically speaking this uses Python/astropy to combine archival data from the VLA (Very Large Array) FIRST (Faint Images of the Radio Sky at Twenty Centimeters) survey, with optical spectroscopic data from the SDSS (Sloan Digital Sky Survey).
+Practically speaking this uses Python 2.7/astropy to combine archival data from the VLA (Very Large Array) FIRST (Faint Images of the Radio Sky at Twenty Centimeters) survey, with optical spectroscopic data from the SDSS (Sloan Digital Sky Survey).
 
 As the final paper has not been published yet, currently only the first main module is online (first_imtab). Please see the description below. 
 
