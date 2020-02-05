@@ -5,7 +5,7 @@ Nuclei)."
 This project page will feature code I developed for attaining my Ph.D. in
 black hole astrophysics. The paper with the above title that will
 summarise the results obtained with this code is in preparation and
-will be submitted end of summer 2017.
+will be submitted.
 
 Practically speaking this uses Python 2.7/astropy to combine archival data from the VLA (Very Large Array) FIRST (Faint Images of the Radio Sky at Twenty Centimeters) survey, with optical spectroscopic data from the SDSS (Sloan Digital Sky Survey).
 
